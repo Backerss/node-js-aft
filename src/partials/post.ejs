@@ -1,0 +1,83 @@
+
+
+
+
+    <% function fn(text, count){
+        return text.slice(0, count) + (text.length > count ? "..." : "");
+    } 
+
+
+
+    //fotmat html in post
+    function formatHtml(text){
+        return text.replace(/\n/g, "<br>");
+    }
+
+    %>
+    
+    
+    
+    
+    %> 
+
+    <% data.forEach(datas => { %>
+        <div class="col-md-12 mb-4">
+            <!-- News card -->
+            <div class="card mb-3 text-center hoverable">
+              <div class="card-body">
+                <!-- Grid row -->
+                <div class="row">
+                  <!-- Grid column -->
+                  <div class="col-md-5 mx-3 my-3">
+                    <!-- Featured image -->
+                    <div class="view overlay rgba-white-slight">
+                      <img
+                        src="https://mdbootstrap.com/img/Photos/Others/img%20(43).jpg"
+                        class="img-fluid rounded-bottom"
+                        alt="Sample image for first version of blog listing"
+                      />
+        
+                      <a>
+                        <div class="mask"></div>
+                      </a>
+                    </div>
+                  </div>
+                  <!-- Grid column -->
+        
+                  <!-- Grid column -->
+                  <div
+                    class="col-md-6 text-left ml-xl-3 ml-lg-0 ml-md-3 mt-3"
+                  >
+                    <h4 class="mb-4">
+                      <strong><%= datas.post_topic %></strong>
+                    </h4>
+    
+                    <%= 
+                    
+                    //fn(datas.post_content, 100)
+
+
+                    fn(formatHtml(datas.post_content), 100);
+
+
+                    
+                    %>
+        
+                    <p>
+                      by
+        
+                      <a>
+                        <strong><%= datas.post_by %></strong> </a
+                      ><%= datas.post_time %>
+                    </p>
+        
+                    <a class="btn btn-indigo btn-sm" href="/post/id?id=<%= datas.post_id %>">Read more</a>
+                  </div>
+                  <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+              </div>
+            </div>
+            <!-- News card -->
+        </div>
+    <% }); %>

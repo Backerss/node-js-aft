@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+    />
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="/css/mdb.css" />
+
+    <link rel="stylesheet" href="/css/modules/animations-extended.min.css" />
+
+
+    <title>AFT | HOME</title>
+  </head>
+  <body>
+
+    <header>
+      <%- include('../../partials/header') -%>
+    </header>
+    <main>
+        <div class="container p-5">
+            <div class="row">
+                <div class="col-lg-6 col-12 mx-auto">
+                        <!-- Default form login -->
+                    <form class="text-center border p-lg-5 p-2 mt-5" action="/login/loginForm" method="post">
+
+                        <p class="h4 mb-4">เข้าสู่ระบบ</p>
+
+                        <!-- Email -->
+                        <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail" name="email">
+
+                        <!-- Password -->
+                        <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password" name="pass">
+
+                        <div class="d-flex justify-content-around">
+                            <div>
+                                <!-- Remember me -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+                                    <label class="custom-control-label" for="defaultLoginFormRemember">จดจำการเข้าสู่ระบบ</label>
+                                </div>
+                            </div>
+                            <div>
+                                <!-- Forgot password -->
+                                <a href="">ลืมรหัสผ่านหรือไม่?</a>
+                            </div>
+                        </div>
+
+                        <!-- Sign in button -->
+                        <button class="btn btn-info btn-block my-4" type="submit">เข้าสู่ระบบ</button>
+
+                        <!-- Register -->
+                        <p>ไม่มีบัญชี?
+                            <a href="">ลงทะเบียนขอเข้าใช้งาน</a>
+                        </p>
+                    </form>
+                    <!-- Default form login -->
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Main layout -->
+
+    <!-- Footer -->
+    <%- include('../../partials/footer') %>
+  </body>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
+
+
+    <% if(locals.error === "email:pass:empty") { %>
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'กรุณากรอกข้อมูลให้ครบถ้วน',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    <% } %> 
+
+    <% if(locals.error === "email:pass:notfound") { %>
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'รหัสผ่านหรืออีเมล์ไม่ถูกต้อง',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    <% } %> 
+
+
+  
+ <script src="socket.io/socket.io.js">
+
+        var socket = io();
+
+        
+ </script>
+
+
+
+
+  <script src="/js/jquery-3.4.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="/js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="/js/mdb.js"></script>
+</html>

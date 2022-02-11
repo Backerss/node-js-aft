@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+    />
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="/css/mdb.css" />
+
+    <link rel="stylesheet" href="/css/modules/animations-extended.min.css" />
+
+
+    <style>
+        html,
+        body,
+        header,
+        .jarallax {
+          height: 700px;
+        }
+        @media (max-width: 740px) {
+          html,
+          body,
+          header,
+          .jarallax {
+            height: 100vh;
+          }
+        }
+        @media (min-width: 800px) and (max-width: 850px) {
+          html,
+          body,
+          header,
+          .jarallax {
+            height: 100vh;
+          }
+        }
+      </style>
+    <title>AFT | HOME</title>
+  </head>
+  <body>
+
+    <header>
+      <%- include('../partials/header') -%>
+      <div id="home" class="view jarallax" data-jarallax='{"speed": 0.2}' style="background-image: url(https://scontent.fbkk5-3.fna.fbcdn.net/v/t39.30808-6/273219464_233869758948020_4559928337625973050_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=730e14&_nc_eui2=AeGaiY7SfUFDMKrVDwRmjqOd1jwlCRdv5prWPCUJF2_mmjxAa45DbAlMVi4fV3y94ijZyJCjEUzSqFDNbXKqjuO0&_nc_ohc=qNP-DYxBvNkAX-Cpy6X&_nc_ht=scontent.fbkk5-3.fna&oh=00_AT9S4F2usruI8BA8qha-dUY4ayYPEGDwElwLPOK1FisIng&oe=6209E958); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+            <div class="mask rgba-stylish-light">
+              <div class="container h-100 d-flex justify-content-center align-items-center">
+                <div class="row pt-5 mt-3">
+                  <div class="col-md-12 mb-3">
+                    <div class="intro-info-content text-center">
+                      <h1 class="display-3 white-text mb-5 wow fadeInDown" data-wow-delay="0.3s">ABOUT <a class="white-text font-weight-bold">US</a></h1>
+                      <h5 class="text-uppercase white-text mb-5 font-weight-bold wow fadeInDown" data-wow-delay="0.3s">ประวัติการหรือข้อมูลที่เกี่ยวข้องกับทางวิทยาลัย</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+    </header>
+    <main>
+      <div class="container-fluid mt-3">
+        <div class="row">
+          <div class="col-lg-6 col-12 mx-lg-auto">
+            <div class="card">
+              <div class="card-body">
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <th scope="row">ชื่อภาษาไทย</th>
+                      <td>วิทยาลัยอาชีวศึกษานครสวรรค์</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">ชื่อภาษาอังกฤษ</th>
+                      <td>Nakhonsawan Vocational College</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">ที่ตั้ง</th>
+                      <td>เลขที่ 193 ถนนมาตุลี ตำบลปากน้ำโพ อำเภอเมืองนครสวรรค์ จังหวัดนครสวรรค์ 60000</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">โทรศัพท์</th>
+                      <td>โทร. (056) 221360</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">โทรสาร</th>
+                      <td>โทร. (056) 221086</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">เว็บไซต์</th>
+                      <td>www.nwvoc.ac.th</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">อีเมลล์</th>
+                      <td>admin@nwvoc.ac.th</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">เนื้อที่</th>
+                      <td>25 ไร่ 3 งาน 95 ตารางวา</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Main layout -->
+
+    <!-- Footer -->
+    <%- include('../partials/footer') %>
+  </body>
+
+
+  <script src="/js/jquery-3.4.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="/js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="/js/mdb.js"></script>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+    />
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="/css/mdb.css" />
+
+    <link rel="stylesheet" href="/css/modules/animations-extended.min.css">
+
+
+    <style>
+      .map-container{
+      overflow:hidden;
+      padding-bottom:56.25%;
+      position:relative;
+      height:0;
+      }
+      .map-container iframe{
+      left:0;
+      top:0;
+      height:100%;
+      width:100%;
+      position:absolute;
+      }
+      </style>
+    
+    <title>AFT | HOME</title>
+  </head>
+  <body class="fixed-sn homepage-v1">
+
+    <!--Header-->
+    <%- include('../../partials/header') -%> 
+    <!--Header-->
+    <!-- Navigation -->
+
+    <!-- Main layout -->
+    <main>
+      <div class="container-fluid">
+        <div class="row mt-5">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><%= data.post_topic %></h5>
+                <p class="card-text"><%- data.post_content  %> </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Main layout -->
+
+    <!-- Footer -->
+
+  
+
+</body>
+
+
+  <script src="/js/jquery-3.4.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="/js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="/js/mdb.js"></script>
+</html>
