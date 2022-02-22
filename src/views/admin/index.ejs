@@ -25,6 +25,7 @@
 
 
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
     <title>AFT | ADMIN</title>
@@ -55,30 +56,6 @@
             <ul class="nav navbar-nav nav-flex-icons ml-auto">
       
               <!-- Dropdown -->
-              <li class="nav-item dropdown notifications-nav">
-                <a class="nav-link dropdown-toggle waves-effect" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">
-                  <span class="badge red">3</span> <i class="fas fa-bell"></i>
-                  <span class="d-none d-md-inline-block">Notifications</span>
-                </a>
-                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">
-                    <i class="fas fa-money mr-2" aria-hidden="true"></i>
-                    <span>New order received</span>
-                    <span class="float-right"><i class="far  fa-clock" aria-hidden="true"></i> 13 min</span>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="fas fa-money mr-2" aria-hidden="true"></i>
-                    <span>New order received</span>
-                    <span class="float-right"><i class="far  fa-clock" aria-hidden="true"></i> 33 min</span>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="fas fa-line-chart mr-2" aria-hidden="true"></i>
-                    <span>Your campaign is about to end</span>
-                    <span class="float-right"><i class="far  fa-clock" aria-hidden="true"></i> 53 min</span>
-                  </a>
-                </div>
-              </li>
               <li class="nav-item">
                 <a class="nav-link waves-effect"><i class="fas fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Contact</span></a>
               </li>
@@ -116,7 +93,7 @@
                           <i class="fas fa-user-graduate"></i>
                         </div>
                         <p class="white-text">จำนวนผุ้ใช้</p>
-                        <h4 class="check">XXXX ราย</h4>
+                        <h4 class="check" id="user_all"></h4>
                       </div>
                     </div>
                   </div>
@@ -127,7 +104,7 @@
                           <i class="fas fa-blog"></i>
                         </div>
                         <p class="white-text">จำนวนโพสต์</p>
-                        <h4 class="check">XXXX โพสต์</h4>
+                        <h4 class="check" id="post_all"></h4>
                       </div>
                     </div>
                   </div>
@@ -173,13 +150,8 @@
                         <!-- Table head -->
           
                         <!-- Table body -->
-                        <tbody>
-                          <tr>
-                            <th scope="row">#</th>
-                            <td>ผุ้อำนวยการ วิทยาลัย</td>
-                            <td><button class="btn btn-warning btn-sm px-3" type="button">แก้ไข</button></td>
-                            <td><button class="btn btn-danger btn-sm px-3" type="button">ลบ</button></td>
-                          </tr>
+                        <tbody id="ranks_all">
+                          
 
                         </tbody>
                         <!-- Table body -->
@@ -214,9 +186,9 @@
                               <th scope="row"><%= datas.user_firstname + ' ' + datas.user_lastname %></th>
                               <td><%= datas.user_postion %></td>
                               <td><%= datas.user_email %></td>
-                              <td><button class="btn btn-warning btn-sm px-3" type="button">แก้ไข</button></td>
-                              <td><button class="btn btn-danger btn-sm px-3" type="button">ลบ</button></td>
-                          </tr>
+                              <td><a class="btn btn-warning btn-sm px-3" type="button">แก้ไข</a></td>
+                              <td><a class="btn btn-danger btn-sm px-3" href="" type="button">ลบ</a></td>
+                            </tr>
                            <% }); %> 
                         </tbody>
                         <tfoot>
@@ -243,18 +215,17 @@
                     <div class="card">
                       <div class="card-body">
                         <h5 class="card-title text-center">เพิ่มผู้ใช้งาน</h5>
-                        <form action="admin/adduser" method="post">
                           <!-- 2 column grid layout with text inputs for the first and last names -->
                           <div class="row mb-4">
                             <div class="col">
                               <div class="form-outline">
-                                <input type="text" id="form6Example1" name="firstname" class="form-control" />
+                                <input type="text" id="firstname" name="firstname" class="form-control" />
                                 <label class="form-label" for="form6Example1">First name</label>
                               </div>
                             </div>
                             <div class="col">
                               <div class="form-outline">
-                                <input type="text" id="form6Example2" name="lastname" class="form-control" />
+                                <input type="text" id="lastname" name="lastname" class="form-control" />
                                 <label class="form-label" for="form6Example2">Last name</label>
                               </div>
                             </div>
@@ -262,28 +233,20 @@
                         
                           <!-- Text input -->
                           <div class="form-outline mb-4">
-                            <input type="email" id="form6Example3" name="email" class="form-control" />
+                            <input type="email" id="email" name="email" class="form-control" />
                             <label class="form-label" for="form6Example3">Email</label>
                           </div>
                         
                           <!-- Text input -->
                           <div class="form-outline mb-4">
-                            <input type="text" id="form6Example4" name="postion" class="form-control" />
+                            <input type="text" id="postion" name="postion" class="form-control" />
                             <label class="form-label" for="form6Example4">Postion</label>
                           </div>
                         
                           <!-- Email input -->
-                          <div class="form-outline mb-4">
-                            <select class="form-control" name="Ranks" id="exampleFormControlSelect1">
-                              <option value="1">ผู้อำนวยการวิทยาลัย</option>
-                              <option value="2">ครูผู้สอน</option>
-                              <option value="3">Admin</option>
-                            </select> 
-                          </div>
                         
                           <!-- Submit button -->
-                          <button type="submit" class="btn btn-primary btn-block mb-4">เพิ่มบัญชี</button>
-                        </form>
+                          <button type="submit" id="add-user-submit" class="btn btn-primary btn-block mb-4">เพิ่มบัญชี</button>
                       </div>
                     </div>
                 </div>  
@@ -292,20 +255,18 @@
                   <div class="card">
                     <div class="card-body">
                       <h5 class="card-title text-center">เพิ่ม Ranks</h5>
-                      <form action="/" method="post">
                         <!-- 2 column grid layout with text inputs for the first and last names -->
                         <div class="row mb-4">
                           <div class="col">
                             <div class="form-outline">
-                              <input type="text" id="form6Example1" class="form-control" />
+                              <input type="text" name="add-ranks-name" id="add-ranks-name" class="form-control" />
                               <label class="form-label" for="form6Example1">ชื่อยศ</label>
                             </div>
                           </div>
                         </div>
                       
                         <!-- Submit button -->
-                        <button type="submit" class="btn btn-primary btn-block mb-4">เพิ่มบัญชี</button>
-                      </form>
+                        <button type="button" id="add-ranks-submit" class="btn btn-primary btn-block mb-4">เพิ่มบัญชี</button>
                     </div>
                   </div>
               </div>  
@@ -334,11 +295,19 @@
         <!-- Footer -->
   </body>
 
+
+
+  <script src="socket.io/socket.io.js"></script>
+  <script>
+    var socket = io.connect('http://localhost:3000');
+  </script>
+
+
   <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
   <script>
     $(document).ready(function() {
       $('#summernote').summernote({
-        placeholder: 'Hello Bootstrap 4',
+        placeholder: 'หากคุณมีข่าวสารที่ต้องการจะประกาศสามารถประกาศผ่าน Blog ตรงนี้ได้',
         tabsize: 2,
         height: 100
       });
@@ -350,6 +319,9 @@
   <script type="text/javascript" src="../../js/bootstrap.js"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="../../js/mdb.min.js"></script>
+  <script src="../../js/main.js"></script>
+
+
 
 
 
@@ -366,6 +338,14 @@
       minScrollbarLength: 20
     });
 
+  </script>
+
+
+  <script>
+
+    //get url parameter
+  
+    
   </script>
 
 
@@ -405,6 +385,56 @@
     'label').remove();
 
 </script>
+
+
+      <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+
+        <div class="modal-dialog modal-lg modal-notify modal-info" role="document">
+          <!-- Content -->
+          <div class="modal-content">
+            <!-- Header -->
+            <div class="modal-header">
+              <p class="heading lead">Modal Info</p>
+
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" class="white-text">&times;</span>
+              </button>
+            </div>
+
+            <!-- Body -->
+           
+              <div class="modal-body">
+                <div>
+                    <div class="row">
+                      <div class="col-md mb-4">
+
+                        <div class="md-form md-outline">
+                          <input type="text" id="edit-ranks-id" name="ranks_id" class="form-control disabled">
+                        </div>
+
+                      </div>
+                      <div class="col-md mb-4">
+
+                        <div class="md-form md-outline">
+                          <input type="text" id="edit-ranks-name" name="ranks_name" class="form-control">
+                        </div>
+
+                      </div>
+                    </div>
+                </div>
+              <!-- Footer -->
+              <div class="modal-footer">
+                <button type="button" id="btn-submit-edit-rank" class="btn btn-info">ยืนยัน <i class="far fa-gem ml-1"></i></button>
+                <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">No, thanks</a>
+              </div>
+              </div>
+
+          <!-- Content -->
+        </div>
+        </div>
+
+      </div>
 
   </html> 
 

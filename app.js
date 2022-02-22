@@ -13,13 +13,14 @@ const { posts } = require('./src/router/post/post_id');
 const http = require('http').createServer(app);
 const port = process.env.PORT || 3000;
 
-const io = require('socket.io')(http, { cors : { origin: "*"} });
+const io = require('socket.io')(http);
 
 app.set('views', "./src/views");
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
 
 
 
@@ -60,6 +61,9 @@ app.use('/post', posts);
 
 
 
+//zone admin
+
+
 
 
 
@@ -68,5 +72,5 @@ app.use('/post', posts);
 
 
 http.listen(port, () => {
-    console.log('listening on :' + port);
+    console.log('http://localhost:' + port);
 });

@@ -54,7 +54,6 @@ logins.post('/loginForm', (req, res) => {
                     res.cookie('user_id', results[0].user_id, { maxAge: 24 * 60 * 60 * 1000});
                     res.cookie('user_name', results[0].user_firstname, { maxAge: 24 * 60 * 60 * 1000 });
                     
-                    
                     res.redirect('/admin');
                 }else {
                     res.render('page/login', {
