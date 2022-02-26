@@ -9,6 +9,7 @@ const { logins } = require('./src/router/system-login/login');
 const cookieParser = require('cookie-parser');
 const { connection } = require('./src/sql/db');
 const { posts } = require('./src/router/post/post_id');
+const { reg_stu } = require('./src/router/students/reg_stu');
 
 const http = require('http').createServer(app);
 const port = process.env.PORT || 3000;
@@ -57,6 +58,7 @@ app.get('/about', (req, res) => {
 app.use('/login',logins);
 app.use('/admin', admins);
 app.use('/post', posts);
+app.use('/reg_stu', reg_stu);
 
 
 

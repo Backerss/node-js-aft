@@ -1,3 +1,31 @@
+<script>
+  //get cookie
+  var cookie = document.cookie;
+  var cookie_array = cookie.split(";");
+  
+
+  function GetValueCookies(name)
+  {
+    var value = "";
+    for (var i = 0; i < cookie_array.length; i++)
+    {
+      var cookie_name = cookie_array[i].split("=")[0];
+      var cookie_value = cookie_array[i].split("=")[1];
+      if (cookie_name == name)
+      {
+        value = cookie_value;
+        break;
+      }
+    }
+    return value;
+  } 
+
+  console.log(GetValueCookies("user_id"));
+ 
+
+</script>
+
+
 <div id="slide-out" class="side-nav sn-bg-4 fixed">
     <ul class="custom-scrollbar">
       <!-- Logo -->
@@ -22,8 +50,7 @@
         <ul class="collapsible collapsible-accordion">
           <!-- Simple link -->
           <li><a href="/admin" class="collapsible-header waves-effect"><i class="fas fa-home"></i>
-              หน้าหลัก</a></li>
-
+              หน้าหลัก</a></li>          
         </ul>
       </li>
       <!-- Side navigation links -->

@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+    />
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="/css/mdb.css" />
+
+    <link rel="stylesheet" href="/css/modules/animations-extended.min.css" />
+
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+
+    <title>AFT | HOME</title>
+  </head>
+  <body>
+
+    <header>
+      <%- include('../../partials/header') -%>
+    </header>
+    <main>
+        <div class="container p-5 mt-5">
+           <div class="row">
+               <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">เลือกสาขาวิชา</h5>
+                        <div class="row">
+                          <div class="col-lg col-md-6 mb-4">
+
+                            <!-- Name -->
+                            <select class="mdb-select md-form" id="grade-select">
+                              <option value="None" disabled selected>เลือกระดับ</option>
+                              <option value="ปวช">ปวช</option>
+                              <option value="ปวส">ปวส</option>
+                            </select>
+              
+                        </div>
+                            <div class="col-lg col-md-6 mb-4">
+
+                                <!-- Name -->
+                                <select class="mdb-select md-form" id="sub-select">
+                                  <option value="None" disabled selected>เลือกสาขาวิชา</option>
+                                </select>
+                  
+                            </div>
+                        </div>
+                        <h5 class="card-title">ข้อมูลส่วนตัว</h5>
+                        <div class="row">
+                          <div class="col-lg col-12">
+                            <div class="md-form">
+                              <input type="text" id="id_card" class="form-control">
+                              <label for="form1" class="">รหัสประจำตัวบัตรประชาชน</label>
+                            </div>
+                          </div>
+                          <div class="col-lg col-12">
+                            <select class="mdb-select md-form" id="prefix">
+                              <option value="" disabled selected>คำนำหน้า</option>
+                              <option value="นาย">นาย</option>
+                              <option value="นาง">นาง</option>
+                              <option value="นางสาว">นางสาว</option>
+                            </select>
+                          </div>
+                          <div class="col-lg col-12">
+                            <div class="md-form">
+                              <input type="text" id="firstname" class="form-control">
+                              <label for="form1" class="">ชื่อจริง</label>
+                            </div>
+                          </div>
+                          <div class="col-lg col-12">
+                            <div class="md-form">
+                              <input type="text" id="lastname" class="form-control">
+                              <label for="form1" class="">นามสกุล</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg col-12">
+                            <div class="md-form">
+                              <input type="date" id="birtday" class="form-control datepicker">
+                              <label for="form1" class="">วันเกิด</label>
+                            </div>
+                          </div>
+                          <div class="col-lg col-12">
+                            <div class="md-form">
+                              <input type="tel" id="pnumber" class="form-control">
+                              <label for="form1" class="">เบอร์โทรศัพท์</label>
+                            </div>
+                          </div>
+                          <div class="col-lg col-12">
+                            <div class="md-form">
+                              <input type="email" id="email" class="form-control">
+                              <label for="form1" class="">Email</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg col-12">
+                            <div class="md-form">
+                              <select class="mdb-select md-form" id="pro">
+                                <% if(locals.thai_pro) { %> 
+                                  <% thai_pro.forEach(data => { %>
+                                      <option value="<%= data.name_th %>"><%= data.name_th %></option>
+                                  <% }); %> 
+                                <% } %> 
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-lg col-12">
+                            <div class="md-form">
+                              <div class="md-form">
+                                <input type="text" id="amp" class="form-control">
+                                <label for="form1" class="">อำเภอ</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="md-form">
+                              <input type="text" id="tombon" class="form-control">
+                              <label for="form1">ตำบล</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg col-12">
+                            <div class="md-form">
+                              <div class="md-form">
+                                <input type="number" id="zip_code" class="form-control active">
+                                <label for="form1" class="active">รหัสไปรษณีย์</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <hr>
+                        <h5 class="card-title">สถานศึกษาเดิม</h5>
+                        <p>หากไม่พบข้อมูลสถานศึกษา โปรดติดต่อ</p>
+                        <div class="row">
+                          <div class="col-lg col-12">
+                            <div class="md-form">
+                              <input type="text" id="old_school" class="form-control">
+                              <label for="form1" class="">ชื่อสถานศึกษา</label>
+                            </div>
+                          </div>
+                          <div class="col-lg col-12">
+                            <div class="md-form">
+                              <input type="text" id="old_pro" class="form-control">
+                              <label for="form1" class="">จังหวัด</label>
+                            </div>
+                          </div> 
+                          <div class="col-lg col-12">
+                            <div class="md-form">
+                              <input type="text" id="old_amp" class="form-control">
+                              <label for="form1" class="">อำเภอ</label>
+                            </div>
+                          </div> 
+                          <div class="col-lg col-12">
+                            <div class="md-form">
+                              <input type="text" id="old_tom" class="form-control">
+                              <label for="form1" class="">ตำบล</label>
+                            </div>
+                          </div> 
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-6 col-12">
+                            <div class="md-form">
+                              <input type="text" id="old_grade" class="form-control">
+                              <label for="form1" class="">ผลการเรียน</label>
+                            </div>
+                          </div>
+                        </div>
+                        <hr>
+                        <h5 class="card-title">หลักฐานการศึกษา</h5>
+                        <p>กรุณาอัพโหลดใบรายงานผลการศึกษา (สามารถอัพโหลดภายหลังได้ที่เมนู "ค้นหาใบสมัคร") หากไม่อัพโหลด เจ้าหน้าที่จะไม่ดำเนินการตรวจคุณสมบัติให้</p>
+                        <div class="row">
+                          <div class="col-lg col-12">
+                            <div class="md-form">
+                              <div class="file-field">
+                                <div class="btn btn-primary btn-sm float-left">
+                                  <span>อัพโหลด</span>
+                                  <input type="file">
+                                </div>
+                                <div class="file-path-wrapper">
+                                  <input class="file-path validate" type="text" placeholder="สำเนาใบรายงานผลการศึกษา (ด้านหน้า)">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg col-12">
+                            <div class="md-form">
+                              <div class="file-field">
+                                <div class="btn btn-primary btn-sm float-left">
+                                  <span>อัพโหลด</span>
+                                  <input type="file">
+                                </div>
+                                <div class="file-path-wrapper">
+                                  <input class="file-path validate" type="text" placeholder="สำเนาใบรายงานผลการศึกษา (ด้านหลัง)">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg col-12">
+                            <div class="md-form">
+                              <div class="file-field">
+                                <div class="btn btn-primary btn-sm float-left">
+                                  <span>อัพโหลด</span>
+                                  <input type="file">
+                                </div>
+                                <div class="file-path-wrapper">
+                                  <input class="file-path validate" type="text" placeholder="สำเนาเอกสารอื่นๆ กรณีที่มีชื่อ-นามสกุลไม่ตรงกับใบรายงานผลการศึกษา เช่น สำเนาใบเปลี่ยนชื่อ-นามสกุล คำสั่งแต่งตั้งยศ เป็นต้น">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                          <div class="col-lg col-12">
+                            <fieldset class="form-check mt-4">
+                              <input class="form-check-input filled-in" type="checkbox" id="checkbox2">
+                              <label class="form-check-label" for="checkbox2">ข้าพเจ้าขอรับรองว่า "ข้อมูลข้างต้นที่ข้าพเจ้ากรอกมานั้น เป็นความจริงทุกประการ หากมหาวิทยาลัยตรวจพบว่า ข้อมูลดังกล่าวเป็นเท็จ ข้าพเจ้ายินยอมให้มหาวิทยาลัยตัดสิทธิ์ในการเข้าศึกษา</label>
+                            </fieldset>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg col-12 d-flex justify-content-center">
+                            <button class="btn btn-primary" id="submit" type="button">บันทึก</button>
+                            <button class="btn btn-danger" type="button">ยกเลิก</button>
+                          </div>
+                        </div>
+                    </div>
+                
+                </div>
+               </div>
+           </div>
+        </div>
+    </main>
+    <!-- Main layout -->
+
+    <!-- Footer -->
+    <%- include('../../partials/footer') %>
+  </body>
+
+  
+
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
+
+
+    <% if(locals.error === "email:pass:empty") { %>
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'กรุณากรอกข้อมูลให้ครบถ้วน',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    <% } %> 
+
+    <% if(locals.error === "email:pass:notfound") { %>
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'รหัสผ่านหรืออีเมล์ไม่ถูกต้อง',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    <% } %> 
+
+
+  
+ <script src="socket.io/socket.io.js">
+
+        var socket = io();
+
+        
+ </script>
+
+
+
+
+
+  <script src="/js/jquery-3.4.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="/js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="/js/mdb.js"></script>
+
+
+  <script>
+    $(document).ready(function () {
+      $('.mdb-select').materialSelect();
+    });
+
+    $('.datepicker').pickadate();
+</script>
+
+      
+<script>
+
+  function CheckIdCard(id_card)
+  {
+      $.ajax({
+          url: 'reg_stu/check_idcard',
+          type: 'POST',
+          dataType: 'json',
+          data: {
+              id_card: id_card
+          },
+          success: function(status) {
+             if(status.status == true){
+                return true;
+             }
+          },
+          error: function(status) {
+              console.log(status);
+          }
+      });
+
+      return false;
+  }
+
+
+  
+
+</script>
+
+  <script>
+
+      
+
+    
+      $('#pro').change(function(){
+        var pro = $('#pro').val();
+
+        $.getJSON('/data/thai_provinces.json', function (data) {
+            
+            data.RECORDS.forEach(data => {
+              if(data.name_th == tombon) {
+                $('#amp').val(data.zip_code);
+              }
+            });
+          });
+      });
+
+      //change events
+      $('#tombon').change(function () {
+          var tombon = $('#tombon').val();
+          
+          //get json tombon
+          $.getJSON('/data/thai_tombons.json', function (data) {
+            
+            data.RECORDS.forEach(data => {
+              if(data.name_th == tombon) {
+                $('#zip_code').val(data.zip_code);
+              }
+            });
+          });
+      });
+
+
+      $('#grade-select').change(function(){
+
+          $.getJSON('/data/subject.json', function (data) {
+            
+            data.forEach(datas => {
+              if(datas.el == $('#grade-select').val()) {
+                $('#sub-select').append('<option value="'+datas.fow+'">'+datas.fow+'</option>');
+              }
+            });
+          });
+
+
+      });
+
+
+
+      $('#id_card').change(function(){
+        
+        var id_card = $('#id_card').val();
+      
+
+        if($('#id_card').val().length < 13)
+        {
+          //add class
+          $('#id_card').addClass('is-invalid');
+        }
+        else if($('#id_card').val().length > 13)
+        {
+          //add class
+          $('#id_card').addClass('is-invalid');
+        }else
+        {
+            $.ajax({
+              url: 'reg_stu/check_idcard',
+              type: 'POST',
+              dataType: 'json',
+              data: {
+                  id_card: id_card
+              },
+              success: function(status) {
+                if(status.status == true){
+                  $('#id_card').addClass('is-invalid');
+                  //add class disabled btn
+                  $('#submit').attr('disabled', true);
+                }
+                else
+                {
+                  $('#id_card').removeClass('is-invalid');
+                  //remove class disabled btn
+                  $('#submit').attr('disabled', false);
+                }
+              }
+          });
+        }
+      });
+
+      $('#pnumber').change(function(){
+        if($('#pnumber').val().length < 10)
+        {
+          //add class
+          $('#pnumber').addClass('is-invalid');
+        }
+        else if($('#pnumber').val().length > 10)
+        {
+          //remove class
+          $('#pnumber').addClass('is-invalid');
+        }
+        else
+        {
+          //remove class
+          $('#pnumber').removeClass('is-invalid');
+        }
+      });
+      
+
+      if($('#email').change(function(){
+        if($('#email').val() == "")
+        {
+          //add class
+          $('#email').addClass('is-invalid');
+        }
+        else if($('#email').val().indexOf('@gmail.com'))
+        {
+          //remove class
+          $('#email').addClass('is-invalid');
+        }
+        else
+        {
+          //remove class
+          $('#email').removeClass('is-invalid');
+        }
+      }));
+
+      
+
+
+      $('#submit').click(function(){
+        var sub = $('#sub-select').val();
+        var id_card = $('#id_card').val();
+        var firstname = $('#firstname').val();
+        var lastname = $('#lastname').val();
+        var birtday = $('#birtday').val();
+        var pnumber = $('#pnumber').val();
+        var email = $('#email').val();
+        var pro = $('#pro').val();
+        var amp = $('#amp').val();
+        var tombon = $('#tombon').val();
+        var zip_code = $('#zip_code').val();
+        var old_school = $('#old_school').val();
+        var old_pro = $('#old_pro').val();
+        var old_amp = $('#old_amp').val();
+        var old_tom = $('#old_tom').val();
+        var old_grade = parseFloat($('#old_grade').val());
+        var prefix = $('#prefix').val();
+
+
+        var grade_select = $('#grade-select').val();
+
+        //format string to float 
+    
+
+
+        if(sub == null){
+          Swal.fire({
+            icon: 'error',
+            title: 'กรุณาเลือกสาขาวิชา',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+
+        else if(id_card == null){
+          Swal.fire({
+            icon: 'error',
+            title: 'กรุณากรอกรหัสบัตรประชาชน',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        } //else if check id card < 13 
+        else if($('#id_card').val().length < 13)
+        {
+          Swal.fire({
+            icon: 'error',
+            title: 'กรุณากรอกรหัสบัตรประชาชนให้ครบ 13 หลัก',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }else if(CheckIdCard(id_card) == true)
+        {
+            Swal.fire({
+              icon: 'error',
+              title: 'กรุณากรอกรหัสบัตรประชาชนให้ถูกต้อง',
+              showConfirmButton: false,
+              timer: 1500
+            })
+        }
+        
+      
+        else if(prefix == null){
+          Swal.fire({
+            icon: 'error',
+            title: 'กรุณาเลือกคำนำหน้าชื่อ',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+
+        else if(firstname == ""){
+          Swal.fire({
+            icon: 'error',
+            title: 'กรุณากรอกชื่อจริง',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+
+        else if(lastname == "")
+        {
+          Swal.fire({
+            icon: 'error',
+            title: 'กรุณากรอกนามสกุล',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+
+        else if(birtday == "")
+        {
+          Swal.fire({
+            icon: 'error',
+            title: 'กรุณากรอกวันเกิด',
+            showConfirmButton: true,
+            timer: 1500
+          })
+        }
+
+        else if(pnumber == ""){
+          Swal.fire({
+            icon: 'error',
+            title: 'กรุณากรอกเบอร์โทรศัพท์',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+        //else if < 10
+        else if($('#pnumber').val().length < 10){
+          Swal.fire({
+            icon: 'error',
+            title: 'กรุณากรอกเบอร์โทรศัพท์ให้ครบ 10 หลัก',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+        else if(email == "")
+        {
+          Swal.fire({
+            icon: 'error',
+            title: 'กรุณากรอกอีเมล',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+        //check email @gmail.com
+        else if(email.indexOf('@gmail.com') == -1)
+        {
+          Swal.fire({
+            icon: 'error',
+            title: 'กรุณากรอกอีเมลให้ถูกต้อง',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+        else if(pro == ""){
+          Swal.fire({
+            icon: 'error',
+            title: 'กรุณาเลือกจังหวัด',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+        else if(amp == ""){
+          Swal.fire({
+            icon: 'error',
+            title: 'กรุณาเลือกอำเภอ',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+        else if(zip_code == ""){
+          Swal.fire({
+            icon: 'error',
+            title: 'กรุณากรอกรหัสไปรษณีย์',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+        else if(old_school == ""){
+          Swal.fire({
+            icon: 'error',
+            title: 'กรุณากรอกชื่อโรงเรียน',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+        else if(old_pro == ""){
+          Swal.fire({
+            icon: 'error',
+            title: 'กรุณาเลือกจังหวัด ของสถานศึกษาเก่า',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+        else if(old_amp == ""){
+          Swal.fire({
+            icon: 'error',
+            title: 'กรุณาเลือกอำเภอ ของสถานศึกษาเก่า',
+            showConfirmButton: false,
+          })
+        }
+        else if(old_tom == ""){
+          Swal.fire({
+            icon: 'error',
+            title: 'กรุณาเลือกตำบล ของสถานศึกษาเก่า',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }//check old_grade < 2.00
+        else if(old_grade < 2.00)
+        {
+          Swal.fire({
+            icon: 'error',
+            title: 'กรุณากรอกระดับชั้นของสถานศึกษาเก่า',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }       
+        else {
+              $.ajax({
+              url: "reg_stu/submit_add",
+              type: "POST",
+              data: {
+                "grade_select": grade_select,
+                "sub": sub,
+                "id_card": id_card,
+                "prefix": prefix,
+                "firstname": firstname,
+                "lastname": lastname,
+                "birtday": birtday,
+                "pnumber": pnumber,
+                "email": email,
+                "pro": pro,
+                "amp": amp,
+                "tombon": tombon,
+                "zip_code": zip_code,
+                "old_school": old_school,
+                "old_pro": old_pro,
+                "old_amp": old_amp,
+                "old_tom": old_tom,
+                "old_grade": old_grade,
+              },
+              success: function(data) {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'ลงทะเบียนสำเร็จ',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+
+                setTimeout(function(){
+                  window.location.href = "/reg_stu";
+                }, 1500);
+              },
+              error: function(data) {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'ไม่สามารถแก้ไขข้อมูลได้',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+              }
+
+        });
+        }
+      });
+  </script>
+
+
+
+</html>
