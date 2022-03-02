@@ -37,7 +37,7 @@ const ifLoginNow = (req, res, next) => {
 
 
 
-reg_stu.get("/", ifLoginNow, (req, res) => {
+reg_stu.get("/", (req, res) => {
 
 
       res.render("students/reg_stu", {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 11, 2022 at 09:15 AM
+-- Generation Time: Mar 01, 2022 at 03:45 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -49,6 +49,43 @@ CREATE TABLE `nwvoc_ranks` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `nwvoc_status`
+--
+
+CREATE TABLE `nwvoc_status` (
+  `status_id` int(11) NOT NULL,
+  `status_opening` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nwvoc_stu`
+--
+
+CREATE TABLE `nwvoc_stu` (
+  `stu_id` int(11) NOT NULL,
+  `stu_id_card` varchar(13) NOT NULL,
+  `stu_prefix` varchar(20) NOT NULL,
+  `stu_firstname` varchar(60) NOT NULL,
+  `stu_lastname` varchar(60) NOT NULL,
+  `stu_birtday` varchar(60) NOT NULL,
+  `stu_pnumber` varchar(60) NOT NULL,
+  `stu_email` varchar(60) NOT NULL,
+  `stu_pro` varchar(60) NOT NULL,
+  `stu_amp` varchar(60) NOT NULL,
+  `stu_tombon` varchar(60) NOT NULL,
+  `stu_zip_code` varchar(60) NOT NULL,
+  `stu_old_school` varchar(60) NOT NULL,
+  `stu_old_pro` varchar(60) NOT NULL,
+  `stu_old_amp` varchar(60) NOT NULL,
+  `stu_old_tom` varchar(60) NOT NULL,
+  `stu_old_grade` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `nwvoc_user`
 --
 
@@ -79,6 +116,18 @@ ALTER TABLE `nwvoc_ranks`
   ADD PRIMARY KEY (`ranks_id`);
 
 --
+-- Indexes for table `nwvoc_status`
+--
+ALTER TABLE `nwvoc_status`
+  ADD PRIMARY KEY (`status_id`);
+
+--
+-- Indexes for table `nwvoc_stu`
+--
+ALTER TABLE `nwvoc_stu`
+  ADD PRIMARY KEY (`stu_id`);
+
+--
 -- Indexes for table `nwvoc_user`
 --
 ALTER TABLE `nwvoc_user`
@@ -99,6 +148,18 @@ ALTER TABLE `nwvoc_post`
 --
 ALTER TABLE `nwvoc_ranks`
   MODIFY `ranks_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `nwvoc_status`
+--
+ALTER TABLE `nwvoc_status`
+  MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `nwvoc_stu`
+--
+ALTER TABLE `nwvoc_stu`
+  MODIFY `stu_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `nwvoc_user`
